@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Eggocentrico | All-day Brunch en Madrid</title>
+<!-- Google Fonts: Quicksand for a rounded, playful, modern feel -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration -->
+<script data-purpose="tailwind-config">
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Quicksand', 'sans-serif'],
+          },
+          colors: {
+            primary: {
+              DEFAULT: '#FFD700', // Yolk Yellow
+              hover: '#E5C100',
+              light: '#FFE44D'
+            },
+            surface: {
+              DEFAULT: '#FDFBF7', // Cream background
+              dim: '#F5F3EB',
+            },
+            earth: {
+              DEFAULT: '#4A3B32', // Earthy dark brown/grey for text
+              light: '#7A6B62'
+            }
+          },
+          borderRadius: {
+            'egg': '2rem', // Super rounded for theme
+          }
+        }
+      }
+    }
+  </script>
+<!-- Custom Styles -->
+<style data-purpose="custom-utilities">
+    /* Base styling for smooth scrolling and general typography */
+    body {
+      background-color: theme('colors.surface.DEFAULT');
+      color: theme('colors.earth.DEFAULT');
+      -webkit-font-smoothing: antialiased;
+    }
+    
+    /* Utility for hidden scrollbar but keeping functionality */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;  /* IE and Edge */
+      scrollbar-width: none;  /* Firefox */
+    }
+
+    /* Subtle float animation for hero elements */
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0px); }
+    }
+    .animate-float {
+      animation: float 6s ease-in-out infinite;
+    }
+  </style>
+</head>
+<body class="font-sans antialiased text-earth bg-surface">
+<!-- BEGIN: MainHeader -->
+<header class="fixed top-0 left-0 right-0 z-50 bg-surface/90 backdrop-blur-md border-b border-surface-dim transition-all duration-300" data-purpose="site-header">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between items-center h-20">
+<!-- Logo -->
+<div class="flex-shrink-0 flex items-center cursor-pointer">
+<span class="text-2xl font-bold tracking-tight text-earth flex items-center gap-2">
+<!-- Simple SVG Egg Icon -->
+<svg class="w-8 h-8 text-primary" fill="currentColor" viewbox="0 0 24 24">
+<path d="M12 2C8.13 2 5 6.18 5 11.5C5 16.75 8.13 22 12 22C15.87 22 19 16.75 19 11.5C19 6.18 15.87 2 12 2Z"></path>
+</svg>
+            Eggocentrico
+          </span>
+</div>
+<!-- Desktop Navigation -->
+<nav aria-label="Main navigation" class="hidden md:flex space-x-8" data-purpose="desktop-nav">
+<a class="text-earth hover:text-primary transition-colors font-semibold text-sm uppercase tracking-wide" href="#carta">Carta</a>
+<a class="text-earth hover:text-primary transition-colors font-semibold text-sm uppercase tracking-wide" href="#historia">Historia</a>
+<a class="text-earth hover:text-primary transition-colors font-semibold text-sm uppercase tracking-wide" href="#localizacion">Localización</a>
+<a class="text-earth hover:text-primary transition-colors font-semibold text-sm uppercase tracking-wide" href="#rewards">Rewards</a>
+<a class="text-earth hover:text-primary transition-colors font-semibold text-sm uppercase tracking-wide" href="#catering">Catering</a>
+</nav>
+<!-- CTAs -->
+<div class="hidden sm:flex items-center space-x-4">
+<a class="text-earth font-bold hover:text-primary transition-colors" href="#delivery">Pedir Delivery</a>
+<a class="bg-primary hover:bg-primary-hover text-earth font-bold py-2.5 px-6 rounded-full shadow-sm hover:shadow-md transition-all transform hover:-translate-y-0.5" href="#reservar">
+            Reservar mesa
+          </a>
+</div>
+<!-- Mobile menu button -->
+<div class="flex items-center sm:hidden">
+<button aria-controls="mobile-menu" aria-expanded="false" class="text-earth hover:text-primary focus:outline-none" type="button">
+<span class="sr-only">Open main menu</span>
+<svg class="h-6 w-6" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+</div>
+</div>
+</div>
+</header>
+<!-- END: MainHeader -->
+<main class="pt-20">
+<!-- BEGIN: Hero Section -->
+<section class="relative bg-surface overflow-hidden pt-12 pb-16 sm:pt-16 sm:pb-24 lg:pb-32 lg:pt-24" data-purpose="hero-section">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+<div class="lg:grid lg:grid-cols-12 lg:gap-8 items-center">
+<!-- Hero Text -->
+<div class="sm:text-center md:max-w-2xl md:mx-auto lg:col-span-6 lg:text-left z-10 relative">
+<div class="inline-flex items-center px-4 py-2 rounded-full bg-primary/20 text-earth font-semibold text-sm mb-6">
+<span class="w-2 h-2 rounded-full bg-primary mr-2 animate-pulse"></span>
+              Abierto todos los días
+            </div>
+<h1 class="text-5xl tracking-tight font-extrabold text-earth sm:text-6xl md:text-7xl lg:text-6xl xl:text-7xl mb-6">
+<span class="block">Good Eggs.</span>
+<span class="block text-primary">Good Vibes.</span>
+</h1>
+<p class="mt-3 text-base text-earth-light sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0 font-medium">
+              Tu all-day brunch favorito a un paso del Bernabéu. Huevos ecológicos, pan artesano, café de especialidad y la mejor energía de Madrid.
+            </p>
+<div class="mt-8 sm:max-w-lg sm:mx-auto sm:text-center lg:text-left lg:mx-0 flex flex-col sm:flex-row gap-4">
+<a class="inline-flex items-center justify-center px-8 py-4 border border-transparent text-lg font-bold rounded-full text-earth bg-primary hover:bg-primary-hover shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1" href="#reservar">
+                Reservar mesa
+              </a>
+<a class="inline-flex items-center justify-center px-8 py-4 border-2 border-earth text-lg font-bold rounded-full text-earth bg-transparent hover:bg-earth hover:text-surface transition-all" href="#delivery">
+                Pedir online
+              </a>
+</div>
+</div>
+<!-- Hero Image -->
+<div class="mt-12 relative sm:max-w-lg sm:mx-auto lg:mt-0 lg:max-w-none lg:mx-0 lg:col-span-6 lg:flex lg:items-center">
+<div class="relative mx-auto w-full rounded-egg shadow-2xl lg:max-w-md overflow-hidden animate-float">
+<!-- Using a high quality placeholder for Eggs Benedict -->
+<img alt="Huevos Benedictinos de Eggocentrico" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC2LD_O1z0XtxBVX-bCsjYZ0rThYlal2qGDf9cjBU0lm5Hy_PwqqlV25ppSskK3AzENLFnKn3al45reFNik9Aa0SjlYvZZlnHtKHq-0YNZP4NPnIJDmnhhuPJykDiQskuj5KLXkgRvwQLb9x_8kGRuwsdUmINB3vI1f8TETeTXzwRH1CN-UiLPz9R2xu30qjGEMfyoEsdBoWNUW8SEU-kPXmha4EIXJE2GDou6MRS74ayYF6I0ZpWyTCA"/>
+<!-- Decorative blob element behind image -->
+<div class="absolute -z-10 -top-10 -right-10 w-72 h-72 bg-primary rounded-full mix-blend-multiply filter blur-3xl opacity-50"></div>
+<div class="absolute -z-10 -bottom-10 -left-10 w-72 h-72 bg-yellow-200 rounded-full mix-blend-multiply filter blur-3xl opacity-50"></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: Hero Section -->
+<!-- BEGIN: Trust Bar -->
+<section class="bg-surface-dim py-8 border-y border-earth/10" data-purpose="trust-indicators">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid grid-cols-2 gap-6 md:grid-cols-4 text-center divide-x divide-earth/10">
+<!-- Trust Item 1 -->
+<div class="flex flex-col items-center justify-center space-y-2 px-4">
+<svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<span class="font-bold text-sm text-earth">Huevos 100% Eco</span>
+</div>
+<!-- Trust Item 2 -->
+<div class="flex flex-col items-center justify-center space-y-2 px-4">
+<svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M21 15.546c-.523 0-1.046.151-1.5.454a2.704 2.704 0 01-3 0 2.704 2.704 0 00-3 0 2.704 2.704 0 01-3 0 2.704 2.704 0 00-3 0 2.704 2.704 0 01-3 0 2.701 2.701 0 00-1.5-.454M9 6v2m3-2v2m3-2v2M9 3h.01M12 3h.01M15 3h.01M21 21v-7a2 2 0 00-2-2H5a2 2 0 00-2 2v7h18zm-3-9v-2a2 2 0 00-2-2H8a2 2 0 00-2 2v2h12z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<span class="font-bold text-sm text-earth">Pan Artesano M.M.</span>
+</div>
+<!-- Trust Item 3 -->
+<div class="flex flex-col items-center justify-center space-y-2 px-4">
+<svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<span class="font-bold text-sm text-earth">Café de Especialidad</span>
+</div>
+<!-- Trust Item 4 -->
+<div class="flex flex-col items-center justify-center space-y-2 px-4">
+<svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+<path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<span class="font-bold text-sm text-earth">A 5 min del Bernabéu</span>
+</div>
+</div>
+</div>
+</section>
+<!-- END: Trust Bar -->
+<!-- BEGIN: Featured Menu Grid -->
+<section class="py-20 bg-surface" data-purpose="featured-menu" id="carta">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center mb-16">
+<h2 class="text-3xl font-extrabold text-earth sm:text-4xl">Nuestros Favoritos</h2>
+<p class="mt-4 text-lg text-earth-light">Los platos que nos han hecho famosos. Cuidado, enganchan.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+<!-- Menu Item 1 -->
+<article class="bg-white rounded-[32px] overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group flex flex-col h-full border border-earth/5">
+<div class="relative h-48 overflow-hidden">
+<img alt="Classic Benedict" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDATpL7QCRvzjHjyVvwCUSVpRKbgzvSxJ-tTX8cCgvrOlC4AJHad4YOu--Tb5g_fM4qORx55QlKSkHsjt6H4CJY5msNqflVwr6zE0neFNlqOQSgN5Wn05rC-uTyC0ryAgUlRM24cRSVsH8b_ZyKQeP86zAYi8oLFIf_7b2NQITubg-DJao_ceXw78hSH_SewgO-pvL6MrUcofLQ_kTpKx64ZKWCffty_ZQOy2O8oQ7rlRBoGqjS5fvZiA"/>
+<div class="absolute top-4 right-4 bg-primary text-earth font-bold px-3 py-1 rounded-full text-sm">
+                Top Ventas
+              </div>
+</div>
+<div class="p-6 flex flex-col flex-grow">
+<h3 class="text-xl font-bold text-earth mb-2">Classic Benedict</h3>
+<p class="text-earth-light text-sm mb-4 flex-grow">Dos huevos poché ecológicos sobre brioche tostado, bacon ahumado crujiente y nuestra salsa holandesa casera.</p>
+<div class="flex justify-between items-center mt-auto">
+<span class="text-2xl font-extrabold text-earth">12.50€</span>
+</div>
+</div>
+</article>
+<!-- Menu Item 2 -->
+<article class="bg-white rounded-[32px] overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group flex flex-col h-full border border-earth/5">
+<div class="relative h-48 overflow-hidden">
+<img alt="Avo Toast Deluxe" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCo4tLqOK-dPd9EteFQi9FBLA-dXoRkBMazbhPYViXiCOVSCdUA5wSJt_oMGUlnIy6Gvs5Cp6wO27b0MOAbcfYliY_2_2m4-9r0ydo3qhmnUE50dGfKde_t-GHk9M5Xuu5mvpywXN8Z11qwFBHyGkEMRE3xR4b7UVwZ3sPXylY57eKu3Z5Z0uKj3cAsN6gMFY8y-uGUUBH6DVgtvGJuHC1adbiTPm_VKkueM7I26CQqhOG7LxM41qlStw"/>
+</div>
+<div class="p-6 flex flex-col flex-grow">
+<h3 class="text-xl font-bold text-earth mb-2">Avo Toast Deluxe</h3>
+<p class="text-earth-light text-sm mb-4 flex-grow">Tostada de masa madre, aguacate machacado, granada, rabanitos, huevo poché y dukkah de pistachos.</p>
+<div class="flex justify-between items-center mt-auto">
+<span class="text-2xl font-extrabold text-earth">11.90€</span>
+</div>
+</div>
+</article>
+<!-- Menu Item 3 -->
+<article class="bg-white rounded-[32px] overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group flex flex-col h-full border border-earth/5">
+<div class="relative h-48 overflow-hidden">
+<img alt="Truffle Mushroom" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC3v92jy5Ni6BkyePHIgJhjhXGNs6a5oeqNQbui9ApfEM6LB3-hwFRS7WvlY02OuVYEwZE_HqEh6Ob37NlBqko3KetkTREjfBER-osBNlafHrOd7A1mTCOYRI6wnsnqctncp6lJm2sh0vpvChbI-C_naNhKa2yJkcO1felkQUCUxooamsNBhdcSxeayvwO6bEoxoAbm53N4Tn217ULj-84otBIYs32d2nNeJBVL6V3AbQc-tz_vlHXNew"/>
+</div>
+<div class="p-6 flex flex-col flex-grow">
+<h3 class="text-xl font-bold text-earth mb-2">Truffle Mushroom</h3>
+<p class="text-earth-light text-sm mb-4 flex-grow">Setas de temporada salteadas, crema de trufa, espinacas baby y huevo a baja temperatura sobre pan rústico.</p>
+<div class="flex justify-between items-center mt-auto">
+<span class="text-2xl font-extrabold text-earth">13.50€</span>
+</div>
+</div>
+</article>
+<!-- Menu Item 4 -->
+<article class="bg-white rounded-[32px] overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group flex flex-col h-full border border-earth/5">
+<div class="relative h-48 overflow-hidden">
+<img alt="Pancakes Locos" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBLjdEFgxuDk78TBGKu25beAt6dg3looDI1puzk7GDWCcQC6MSUatZqAuGO-T52QaR0EyPitdfe90E3WDHwUCUHV-KlcRNAccjtNyAxO50ZmVKjEgkyJNSa1krNi70Z_zyi6pWyYqE04_HuyhvM7XYZ0nGtyd-0anu2wuOqcqM8WJkwITDfbIdH_6coL7EB8BMDxv69nxIY7lzgLopX8woYo2e4_Mr_Kz9ZkvjiIVrKBai4IscvphvOOw"/>
+</div>
+<div class="p-6 flex flex-col flex-grow">
+<h3 class="text-xl font-bold text-earth mb-2">Pancakes Locos</h3>
+<p class="text-earth-light text-sm mb-4 flex-grow">Torre de tortitas esponjosas, crema de mascarpone, frutos rojos frescos, sirope de arce y crumble de galleta.</p>
+<div class="flex justify-between items-center mt-auto">
+<span class="text-2xl font-extrabold text-earth">10.50€</span>
+</div>
+</div>
+</article>
+</div>
+<div class="mt-12 text-center">
+<a class="inline-flex items-center justify-center px-8 py-4 border-2 border-primary text-lg font-bold rounded-full text-earth bg-transparent hover:bg-primary transition-all" href="#">
+            Ver carta completa
+          </a>
+</div>
+</div>
+</section>
+<!-- END: Featured Menu Grid -->
+<!-- BEGIN: Why Us Section -->
+<section class="py-20 bg-primary/10" data-purpose="features">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 text-center">
+<div>
+<div class="mx-auto flex items-center justify-center h-16 w-16 rounded-full bg-white shadow-sm mb-6">
+<span class="text-3xl">🌱</span>
+</div>
+<h3 class="text-xl font-bold text-earth mb-3">Producto Local</h3>
+<p class="text-earth-light">Trabajamos con proveedores de proximidad para garantizar la máxima frescura y calidad.</p>
+</div>
+<div>
+<div class="mx-auto flex items-center justify-center h-16 w-16 rounded-full bg-white shadow-sm mb-6">
+<span class="text-3xl">✨</span>
+</div>
+<h3 class="text-xl font-bold text-earth mb-3">Good Vibes Only</h3>
+<p class="text-earth-light">Un espacio diseñado para que desconectes, disfrutes y compartas buenos momentos.</p>
+</div>
+<div>
+<div class="mx-auto flex items-center justify-center h-16 w-16 rounded-full bg-white shadow-sm mb-6">
+<span class="text-3xl">🍳</span>
+</div>
+<h3 class="text-xl font-bold text-earth mb-3">Cocina Creativa</h3>
+<p class="text-earth-light">Le damos una vuelta a los clásicos del brunch con toques sorprendentes y mucho mimo.</p>
+</div>
+<div>
+<div class="mx-auto flex items-center justify-center h-16 w-16 rounded-full bg-white shadow-sm mb-6">
+<span class="text-3xl">⏰</span>
+</div>
+<h3 class="text-xl font-bold text-earth mb-3">Brunch All-Day</h3>
+<p class="text-earth-light">Porque a las 4 de la tarde también apetece un buen benedictine. Servimos brunch todo el día.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- END: Why Us Section -->
+<!-- BEGIN: Call to Action Banner (Delivery/Reservations) -->
+<section class="bg-earth py-16" data-purpose="main-ctas">
+<div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="bg-primary rounded-[40px] p-8 md:p-12 text-center shadow-2xl relative overflow-hidden">
+<!-- Decor -->
+<div class="absolute top-0 right-0 -mt-10 -mr-10 w-40 h-40 bg-white opacity-20 rounded-full"></div>
+<div class="absolute bottom-0 left-0 -mb-10 -ml-10 w-40 h-40 bg-white opacity-20 rounded-full"></div>
+<h2 class="text-3xl md:text-5xl font-extrabold text-earth mb-6 relative z-10">¿Hambre de cosas buenas?</h2>
+<p class="text-lg text-earth/80 mb-10 max-w-2xl mx-auto font-medium relative z-10">
+            Asegura tu mesa para el fin de semana o pide que te lo llevemos a casa. Tú decides cómo disfrutar de Eggocentrico.
+          </p>
+<div class="flex flex-col sm:flex-row justify-center gap-6 relative z-10">
+<a class="inline-flex items-center justify-center px-8 py-4 bg-earth text-white text-lg font-bold rounded-full hover:bg-earth-light transition-colors shadow-lg hover:shadow-xl transform hover:-translate-y-1" href="#reservar">
+              Reservar una mesa
+            </a>
+<a class="inline-flex items-center justify-center px-8 py-4 bg-white text-earth text-lg font-bold rounded-full hover:bg-surface-dim transition-colors shadow-lg hover:shadow-xl transform hover:-translate-y-1" href="#delivery">
+              Pedir Delivery
+            </a>
+</div>
+</div>
+</div>
+</section>
+<!-- END: Call to Action Banner -->
+</main>
+<!-- BEGIN: Footer -->
+<footer class="bg-surface-dim pt-16 pb-8 border-t border-earth/10" data-purpose="site-footer">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+<!-- Brand Col -->
+<div class="md:col-span-1">
+<span class="text-2xl font-bold tracking-tight text-earth flex items-center gap-2 mb-4">
+<svg class="w-6 h-6 text-primary" fill="currentColor" viewbox="0 0 24 24">
+<path d="M12 2C8.13 2 5 6.18 5 11.5C5 16.75 8.13 22 12 22C15.87 22 19 16.75 19 11.5C19 6.18 15.87 2 12 2Z"></path>
+</svg>
+            Eggocentrico
+          </span>
+<p class="text-earth-light text-sm mb-6">
+            El all-day brunch que Madrid necesitaba. Buen rollo, mejor comida.
+          </p>
+<!-- Socials -->
+<div class="flex space-x-4">
+<a class="text-earth-light hover:text-primary transition-colors" href="#">
+<span class="sr-only">Instagram</span>
+<svg aria-hidden="true" class="h-6 w-6" fill="currentColor" viewbox="0 0 24 24">
+<path clip-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.476 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" fill-rule="evenodd"></path>
+</svg>
+</a>
+</div>
+</div>
+<!-- Links Col -->
+<div>
+<h4 class="text-earth font-bold uppercase tracking-wider mb-4 text-sm">Explora</h4>
+<ul class="space-y-3">
+<li><a class="text-earth-light hover:text-primary transition-colors text-sm font-medium" href="#carta">Nuestra Carta</a></li>
+<li><a class="text-earth-light hover:text-primary transition-colors text-sm font-medium" href="#reservar">Reservas</a></li>
+<li><a class="text-earth-light hover:text-primary transition-colors text-sm font-medium" href="#delivery">Delivery</a></li>
+<li><a class="text-earth-light hover:text-primary transition-colors text-sm font-medium" href="#catering">Eventos &amp; Catering</a></li>
+</ul>
+</div>
+<!-- Contact Col -->
+<div>
+<h4 class="text-earth font-bold uppercase tracking-wider mb-4 text-sm">Visítanos</h4>
+<ul class="space-y-3 text-sm text-earth-light font-medium">
+<li>Calle de la Fresa, 42</li>
+<li>28036, Madrid</li>
+<li>(Cerca del Estadio S. Bernabéu)</li>
+<li class="pt-2"><a class="hover:text-primary transition-colors" href="mailto:hola@eggocentrico.es">hola@eggocentrico.es</a></li>
+<li><a class="hover:text-primary transition-colors" href="tel:+34910000000">+34 91 000 00 00</a></li>
+</ul>
+</div>
+<!-- Hours Col -->
+<div>
+<h4 class="text-earth font-bold uppercase tracking-wider mb-4 text-sm">Horario</h4>
+<ul class="space-y-3 text-sm text-earth-light font-medium">
+<li class="flex justify-between"><span>Lunes - Viernes</span> <span>09:00 - 17:00</span></li>
+<li class="flex justify-between"><span>Sábado - Domingo</span> <span>09:00 - 18:00</span></li>
+<li class="pt-4">
+<span class="inline-block px-3 py-1 bg-green-100 text-green-800 rounded-full text-xs font-bold">La cocina no cierra</span>
+</li>
+</ul>
+</div>
+</div>
+<div class="border-t border-earth/10 pt-8 flex flex-col md:flex-row justify-between items-center">
+<p class="text-sm text-earth-light">
+          © 2023 Eggocentrico Brunch. Todos los derechos reservados.
+        </p>
+<div class="flex space-x-6 mt-4 md:mt-0 text-sm text-earth-light">
+<a class="hover:text-primary" href="#">Aviso Legal</a>
+<a class="hover:text-primary" href="#">Privacidad</a>
+</div>
+</div>
+</div>
+</footer>
+<!-- END: Footer -->
+</body></html>

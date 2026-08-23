@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Eggocentrico | All-day Brunch en Madrid</title>
+<meta name="description" content="Eggocentrico, tu all-day brunch favorito a un paso del Bernabéu. Huevos ecológicos, pan artesano, café de especialidad y la mejor energía de Madrid."/>
+<link rel="icon" type="image/png" href="img/favicon.png"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&amp;family=Be+Vietnam+Pro:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Be Vietnam Pro', 'sans-serif'],
+            display: ['Quicksand', 'sans-serif'],
+          },
+          colors: {
+            primary: {
+              DEFAULT: '#FFD700',
+              hover: '#E5C100',
+              light: '#FFE44D'
+            },
+            surface: {
+              DEFAULT: '#FDFBF7',
+              dim: '#F5F3EB',
+            },
+            earth: {
+              DEFAULT: '#4A3B32',
+              light: '#7A6B62'
+            },
+            terra: {
+              DEFAULT: '#934B19',
+              light: '#FFA26A'
+            }
+          },
+          borderRadius: {
+            'egg': '2rem',
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    body {
+      background-color: #FDFBF7;
+      color: #4A3B32;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0px); }
+    }
+    .animate-float {
+      animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes blob {
+      0% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+      50% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+      100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+    }
+    .animate-blob {
+      animation: blob 10s ease-in-out infinite;
+    }
+
+    .btn-squish:active {
+      transform: scale(0.96);
+    }
+
+    #toast {
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+    #toast.hidden-toast {
+      opacity: 0;
+      transform: translateY(20px);
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body class="font-sans antialiased text-earth bg-surface">
+
+<header id="site-header" class="fixed top-0 left-0 right-0 z-50 bg-surface/90 backdrop-blur-md border-b border-surface-dim transition-all duration-300">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-20">
+      <a href="#inicio" class="flex-shrink-0 flex items-center" aria-label="Eggocentrico, inicio">
+        <span class="text-2xl font-bold tracking-tight text-earth flex items-center gap-2 font-display">
+          <svg class="w-8 h-8 text-primary" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 2C8.13 2 5 6.18 5 11.5C5 16.75 8.13 22 12 22C15.87 22 19 16.75 19 11.5C19 6.18 15.87 2 12 2Z"></path>
+          </svg>
+          Eggocentrico
+        </span>
+      </a>
+
+      <nav aria-label="Navegación principal" class="hidden md:flex space-x-8">
+        <a class="text-earth hover:text-primary transition-colors font-semibold text-sm uppercase tracking-wide" href="#historia">Historia</a>
+        <a class="text-earth hover:text-primary transition-colors font-semibold text-sm uppercase tracking-wide" href="#carta">Carta</a>
+        <a class="text-earth hover:text-primary transition-colors font-semibold text-sm uppercase tracking-wide" href="#catering">Catering</a>
+        <a class="text-earth hover:text-primary transition-colors font-semibold text-sm uppercase tracking-wide" href="#localizacion">Localización</a>
+      </nav>
+
+      <div class="hidden sm:flex items-center space-x-4">
+        <a href="https://www.instagram.com/eggocentrico.madrid/" target="_blank" rel="noopener" aria-label="Instagram de Eggocentrico (@eggocentrico.madrid)" class="text-earth hover:text-primary transition-colors">
+          <svg aria-hidden="true" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+            <path clip-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.476 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" fill-rule="evenodd"></path>
+          </svg>
+        </a>
+        <a class="bg-primary hover:bg-primary-hover text-earth font-bold py-2.5 px-6 rounded-full shadow-sm hover:shadow-md transition-all transform hover:-translate-y-0.5 btn-squish" href="https://www.google.com/maps/reserve/v/dine/c/ZW0ie_Gpi_E?source=pa&amp;opi=79508299&amp;hl=es-ES&amp;gei=-nSJauThH8qwhbIP94uL0AE&amp;ahbb=1&amp;sourceurl=https://www.google.es/maps/preview/place?authuser%3D0%26hl%3Des%26gl%3Des%26pb%3D!1m20!1s0xd42290aebf2e215:0x567d8b81387911dd!3m12!1m3!1d8716.37713402028!2d-3.6521859500000002!3d40.424672650000005!2m3!1f0!2f0!3f0!3m2!1i1280!2i551!4f13.1!4m2!3d40.4504733!4d-3.6879979!5e0!9e0!11s/g/11x2qyg9gv!12m4!2m3!1i360!2i120!4i8!13m57!2m2!1i203!2i100!3m2!2i4!5b1!6m6!1m2!1i86!2i86!1m2!1i408!2i240!7m33!1m3!1e1!2b0!3e3!1m3!1e2!2b1!3e2!1m3!1e2!2b0!3e3!1m3!1e8!2b0!3e3!1m3!1e10!2b0!3e3!1m3!1e10!2b1!3e2!1m3!1e10!2b0!3e4!1m3!1e9!2b1!3e2!2b1!9b0!15m8!1m7!1m2!1m1!1e2!2m2!1i195!2i195!3i20!14m6!1s9HSJas7NJI67hbIP14WzmQI:30!2s1i:0,t:6986,p:9HSJas7NJI67hbIP14WzmQI:30!7e81!12e15!17s9HSJas7NJI67hbIP14WzmQI:44!18e3!15m110!1m28!13m9!2b1!3b1!4b1!6i1!8b1!9b1!14b1!20b1!25b1!18m17!3b1!4b1!5b1!6b1!9b1!13b1!14b1!17b1!20b1!21b1!22b1!30b1!32b1!33m1!1b1!34b1!36e2!10m1!8e3!11m1!3e1!17b1!20m2!1e3!1e6!24b1!25b1!26b1!27b1!29b1!30m1!2b1!36b1!37b1!39m3!2m2!2i1!3i1!43b1!52b1!54m1!1b1!55b1!56m1!1b1!61m2!1m1!1e1!65m5!3m4!1m3!1m2!1i224!2i298!72m22!1m8!2b1!5b1!7b1!12m4!1b1!2b1!4m1!1e1!4b1!8m10!1m6!4m1!1e1!4m1!1e3!4m1!1e4!3sother_user_google_review_posts__and__hotel_and_vr_partner_review_posts!6m1!1e1!9b1!89b1!90m2!1m1!1e2!98m3!1b1!2b1!3b1!103b1!113b1!114m3!1b1!2m1!1b1!117b1!122m1!1b1!126b1!127b1!128m1!1b1!21m28!1m6!1m2!1i0!2i0!2m2!1i530!2i551!1m6!1m2!1i1230!2i0!2m2!1i1280!2i551!1m6!1m2!1i0!2i531!2m2!1i1280!2i551!22m1!1e81!29m0!30m6!3b1!6m1!2b1!7m1!2b1!9b1!34m5!7b1!10b1!14b1!15m1!1b0!37i791!39sEggocentrico%2B-%2BBrunch,%2BLunch%2By%2BCaf%25C3%25A9%2BEspecialidad,%2BCalle%2Bde%2BGuti%25C3%25A9rrez%2BSolana,%2BMadrid%26q%3DEggocentrico%2B-%2BBrunch,%2BLunch%2By%2BCaf%25C3%25A9%2BEspecialidad,%2BCalle%2Bde%2BGuti%25C3%25A9rrez%2BSolana,%2BMadrid" target="_blank" rel="noopener">Reservar mesa</a>
+        <a class="bg-earth hover:bg-earth-light text-white font-bold py-2.5 px-6 rounded-full shadow-sm hover:shadow-md transition-all transform hover:-translate-y-0.5 btn-squish" href="#delivery">Pedir Delivery</a>
+      </div>
+
+      <div class="flex items-center sm:hidden">
+        <button id="menu-btn" aria-controls="mobile-menu" aria-expanded="false" class="text-earth hover:text-primary focus:outline-none" type="button">
+          <span class="sr-only">Abrir menú principal</span>
+          <svg id="menu-icon-open" class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+          </svg>
+          <svg id="menu-icon-close" class="h-6 w-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div id="mobile-menu" class="hidden sm:hidden border-t border-surface-dim bg-surface">
+    <nav aria-label="Navegación móvil" class="px-4 py-4 space-y-1">
+      <a class="block px-3 py-3 rounded-xl text-earth hover:bg-surface-dim font-semibold" href="#historia">Historia</a>
+      <a class="block px-3 py-3 rounded-xl text-earth hover:bg-surface-dim font-semibold" href="#carta">Carta</a>
+      <a class="block px-3 py-3 rounded-xl text-earth hover:bg-surface-dim font-semibold" href="#catering">Catering</a>
+      <a class="block px-3 py-3 rounded-xl text-earth hover:bg-surface-dim font-semibold" href="#localizacion">Localización</a>
+      <a class="block mt-2 px-3 py-3 rounded-full bg-primary text-earth font-bold text-center" href="https://www.google.com/maps/reserve/v/dine/c/ZW0ie_Gpi_E?source=pa&amp;opi=79508299&amp;hl=es-ES&amp;gei=-nSJauThH8qwhbIP94uL0AE&amp;ahbb=1&amp;sourceurl=https://www.google.es/maps/preview/place?authuser%3D0%26hl%3Des%26gl%3Des%26pb%3D!1m20!1s0xd42290aebf2e215:0x567d8b81387911dd!3m12!1m3!1d8716.37713402028!2d-3.6521859500000002!3d40.424672650000005!2m3!1f0!2f0!3f0!3m2!1i1280!2i551!4f13.1!4m2!3d40.4504733!4d-3.6879979!5e0!9e0!11s/g/11x2qyg9gv!12m4!2m3!1i360!2i120!4i8!13m57!2m2!1i203!2i100!3m2!2i4!5b1!6m6!1m2!1i86!2i86!1m2!1i408!2i240!7m33!1m3!1e1!2b0!3e3!1m3!1e2!2b1!3e2!1m3!1e2!2b0!3e3!1m3!1e8!2b0!3e3!1m3!1e10!2b0!3e3!1m3!1e10!2b1!3e2!1m3!1e10!2b0!3e4!1m3!1e9!2b1!3e2!2b1!9b0!15m8!1m7!1m2!1m1!1e2!2m2!1i195!2i195!3i20!14m6!1s9HSJas7NJI67hbIP14WzmQI:30!2s1i:0,t:6986,p:9HSJas7NJI67hbIP14WzmQI:30!7e81!12e15!17s9HSJas7NJI67hbIP14WzmQI:44!18e3!15m110!1m28!13m9!2b1!3b1!4b1!6i1!8b1!9b1!14b1!20b1!25b1!18m17!3b1!4b1!5b1!6b1!9b1!13b1!14b1!17b1!20b1!21b1!22b1!30b1!32b1!33m1!1b1!34b1!36e2!10m1!8e3!11m1!3e1!17b1!20m2!1e3!1e6!24b1!25b1!26b1!27b1!29b1!30m1!2b1!36b1!37b1!39m3!2m2!2i1!3i1!43b1!52b1!54m1!1b1!55b1!56m1!1b1!61m2!1m1!1e1!65m5!3m4!1m3!1m2!1i224!2i298!72m22!1m8!2b1!5b1!7b1!12m4!1b1!2b1!4m1!1e1!4b1!8m10!1m6!4m1!1e1!4m1!1e3!4m1!1e4!3sother_user_google_review_posts__and__hotel_and_vr_partner_review_posts!6m1!1e1!9b1!89b1!90m2!1m1!1e2!98m3!1b1!2b1!3b1!103b1!113b1!114m3!1b1!2m1!1b1!117b1!122m1!1b1!126b1!127b1!128m1!1b1!21m28!1m6!1m2!1i0!2i0!2m2!1i530!2i551!1m6!1m2!1i1230!2i0!2m2!1i1280!2i551!1m6!1m2!1i0!2i531!2m2!1i1280!2i551!22m1!1e81!29m0!30m6!3b1!6m1!2b1!7m1!2b1!9b1!34m5!7b1!10b1!14b1!15m1!1b0!37i791!39sEggocentrico%2B-%2BBrunch,%2BLunch%2By%2BCaf%25C3%25A9%2BEspecialidad,%2BCalle%2Bde%2BGuti%25C3%25A9rrez%2BSolana,%2BMadrid%26q%3DEggocentrico%2B-%2BBrunch,%2BLunch%2By%2BCaf%25C3%25A9%2BEspecialidad,%2BCalle%2Bde%2BGuti%25C3%25A9rrez%2BSolana,%2BMadrid" target="_blank" rel="noopener">Reservar mesa</a>
+      <a class="block mt-2 px-3 py-3 rounded-full bg-earth text-white font-bold text-center" href="#delivery">Pedir Delivery</a>
+    </nav>
+  </div>
+</header>
+
+<main id="inicio" class="pt-20">
+
+  <section class="relative bg-surface overflow-hidden pt-12 pb-16 sm:pt-16 sm:pb-24 lg:pb-32 lg:pt-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+      <div class="lg:grid lg:grid-cols-12 lg:gap-8 items-center">
+        <div class="sm:text-center md:max-w-2xl md:mx-auto lg:col-span-6 lg:text-left z-10 relative">
+          <div class="inline-flex items-center px-4 py-2 rounded-full bg-primary/20 text-earth font-semibold text-sm mb-6">
+            <span class="w-2 h-2 rounded-full bg-primary mr-2 animate-pulse"></span>
+            Abierto todos los días
+          </div>
+          <h1 class="text-5xl tracking-tight font-extrabold text-earth sm:text-6xl md:text-7xl lg:text-6xl xl:text-7xl mb-6 font-display">
+            <span class="block">Good Eggs.</span>
+            <span class="block text-primary">Good Vibes.</span>
+          </h1>
+          <p class="mt-3 text-base text-earth-light sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0 font-medium">
+            Tu all-day brunch favorito a un paso del Bernabéu. Huevos ecológicos, pan artesano, café de especialidad y la mejor energía de Madrid.
+          </p>
+          <div class="mt-8 sm:max-w-lg sm:mx-auto sm:text-center lg:text-left lg:mx-0 flex flex-col sm:flex-row gap-4">
+            <a class="inline-flex items-center justify-center px-8 py-4 border border-transparent text-lg font-bold rounded-full text-earth bg-primary hover:bg-primary-hover shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1 btn-squish" href="https://www.google.com/maps/reserve/v/dine/c/ZW0ie_Gpi_E?source=pa&amp;opi=79508299&amp;hl=es-ES&amp;gei=-nSJauThH8qwhbIP94uL0AE&amp;ahbb=1&amp;sourceurl=https://www.google.es/maps/preview/place?authuser%3D0%26hl%3Des%26gl%3Des%26pb%3D!1m20!1s0xd42290aebf2e215:0x567d8b81387911dd!3m12!1m3!1d8716.37713402028!2d-3.6521859500000002!3d40.424672650000005!2m3!1f0!2f0!3f0!3m2!1i1280!2i551!4f13.1!4m2!3d40.4504733!4d-3.6879979!5e0!9e0!11s/g/11x2qyg9gv!12m4!2m3!1i360!2i120!4i8!13m57!2m2!1i203!2i100!3m2!2i4!5b1!6m6!1m2!1i86!2i86!1m2!1i408!2i240!7m33!1m3!1e1!2b0!3e3!1m3!1e2!2b1!3e2!1m3!1e2!2b0!3e3!1m3!1e8!2b0!3e3!1m3!1e10!2b0!3e3!1m3!1e10!2b1!3e2!1m3!1e10!2b0!3e4!1m3!1e9!2b1!3e2!2b1!9b0!15m8!1m7!1m2!1m1!1e2!2m2!1i195!2i195!3i20!14m6!1s9HSJas7NJI67hbIP14WzmQI:30!2s1i:0,t:6986,p:9HSJas7NJI67hbIP14WzmQI:30!7e81!12e15!17s9HSJas7NJI67hbIP14WzmQI:44!18e3!15m110!1m28!13m9!2b1!3b1!4b1!6i1!8b1!9b1!14b1!20b1!25b1!18m17!3b1!4b1!5b1!6b1!9b1!13b1!14b1!17b1!20b1!21b1!22b1!30b1!32b1!33m1!1b1!34b1!36e2!10m1!8e3!11m1!3e1!17b1!20m2!1e3!1e6!24b1!25b1!26b1!27b1!29b1!30m1!2b1!36b1!37b1!39m3!2m2!2i1!3i1!43b1!52b1!54m1!1b1!55b1!56m1!1b1!61m2!1m1!1e1!65m5!3m4!1m3!1m2!1i224!2i298!72m22!1m8!2b1!5b1!7b1!12m4!1b1!2b1!4m1!1e1!4b1!8m10!1m6!4m1!1e1!4m1!1e3!4m1!1e4!3sother_user_google_review_posts__and__hotel_and_vr_partner_review_posts!6m1!1e1!9b1!89b1!90m2!1m1!1e2!98m3!1b1!2b1!3b1!103b1!113b1!114m3!1b1!2m1!1b1!117b1!122m1!1b1!126b1!127b1!128m1!1b1!21m28!1m6!1m2!1i0!2i0!2m2!1i530!2i551!1m6!1m2!1i1230!2i0!2m2!1i1280!2i551!1m6!1m2!1i0!2i531!2m2!1i1280!2i551!22m1!1e81!29m0!30m6!3b1!6m1!2b1!7m1!2b1!9b1!34m5!7b1!10b1!14b1!15m1!1b0!37i791!39sEggocentrico%2B-%2BBrunch,%2BLunch%2By%2BCaf%25C3%25A9%2BEspecialidad,%2BCalle%2Bde%2BGuti%25C3%25A9rrez%2BSolana,%2BMadrid%26q%3DEggocentrico%2B-%2BBrunch,%2BLunch%2By%2BCaf%25C3%25A9%2BEspecialidad,%2BCalle%2Bde%2BGuti%25C3%25A9rrez%2BSolana,%2BMadrid" target="_blank" rel="noopener">Reservar mesa</a>
+            <a class="inline-flex items-center justify-center px-8 py-4 border border-transparent text-lg font-bold rounded-full text-white bg-earth hover:bg-earth-light shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1 btn-squish" href="#delivery">Pedir Delivery</a>
+            <a class="inline-flex items-center justify-center px-8 py-4 border-2 border-earth text-lg font-bold rounded-full text-earth bg-transparent hover:bg-earth hover:text-surface transition-all btn-squish" href="tel:+34854500270" aria-label="Llamar al local de Eggocentrico">📞 Llamar: +34 854 500 270</a>
+          </div>
+        </div>
+
+        <div class="mt-12 relative sm:max-w-lg sm:mx-auto lg:mt-0 lg:max-w-none lg:mx-0 lg:col-span-6 lg:flex lg:items-center">
+          <div class="relative mx-auto w-full rounded-egg shadow-2xl lg:max-w-md overflow-hidden animate-float">
+            <img alt="Huevos Benedictinos de Eggocentrico" class="w-full h-full object-cover" src="img/hero.jpg"/>
+            <div class="absolute -z-10 -top-10 -right-10 w-72 h-72 bg-primary rounded-full mix-blend-multiply filter blur-3xl opacity-50"></div>
+            <div class="absolute -z-10 -bottom-10 -left-10 w-72 h-72 bg-yellow-200 rounded-full mix-blend-multiply filter blur-3xl opacity-50"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-surface-dim py-8 border-y border-earth/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-2 gap-6 md:grid-cols-4 text-center">
+        <div class="flex flex-col items-center justify-center space-y-2 px-4">
+          <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+          </svg>
+          <span class="font-bold text-sm text-earth">Huevos 100% Eco</span>
+        </div>
+        <div class="flex flex-col items-center justify-center space-y-2 px-4">
+          <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M21 15.546c-.523 0-1.046.151-1.5.454a2.704 2.704 0 01-3 0 2.704 2.704 0 00-3 0 2.704 2.704 0 01-3 0 2.704 2.704 0 00-3 0 2.704 2.704 0 01-3 0 2.701 2.701 0 00-1.5-.454M9 6v2m3-2v2m3-2v2M9 3h.01M12 3h.01M15 3h.01M21 21v-7a2 2 0 00-2-2H5a2 2 0 00-2 2v7h18zm-3-9v-2a2 2 0 00-2-2H8a2 2 0 00-2 2v2h12z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+          </svg>
+          <span class="font-bold text-sm text-earth">Pan Artesano M.M.</span>
+        </div>
+        <div class="flex flex-col items-center justify-center space-y-2 px-4">
+          <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+          </svg>
+          <span class="font-bold text-sm text-earth">Café de Especialidad</span>
+        </div>
+        <div class="flex flex-col items-center justify-center space-y-2 px-4">
+          <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+            <path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+          </svg>
+          <span class="font-bold text-sm text-earth">A 5 min del Bernabéu</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-surface-dim" id="historia">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="lg:grid lg:grid-cols-2 lg:gap-16 items-center">
+        <div class="relative mb-12 lg:mb-0">
+          <div class="animate-blob overflow-hidden shadow-2xl">
+            <img alt="Interior de Eggocentrico" class="w-full h-80 lg:h-96 object-cover" loading="lazy" src="img/hero.jpg"/>
+          </div>
+        </div>
+        <div>
+          <span class="inline-block px-4 py-1 rounded-full bg-primary text-earth text-xs font-bold uppercase tracking-wider mb-6">Nuestra Historia</span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-earth mb-6 font-display">Nacimos rompiendo un huevo</h2>
+          <p class="text-earth-light text-lg mb-4">
+            Eggocentrico empezó en 2019 como un pequeño puesto de tortillas en un mercado de barrio. La receta era simple: producto ecológico, pan hecho con masa madre y cero prisas.
+          </p>
+          <p class="text-earth-light text-lg mb-4">
+            Hoy somos el punto de encuentro del barrio: un local luminoso a cinco minutos del Bernabéu donde el brunch no tiene hora, los huevos vienen de granjas de proximidad y el café se tuesta a unos pocos kilómetros.
+          </p>
+          <p class="text-earth-light text-lg">
+            Seguimos rompiendo huevos (y reglas). Esa es la idea.
+          </p>
+          <div class="mt-8 grid grid-cols-3 gap-6">
+            <div>
+              <p class="text-3xl font-extrabold text-primary font-display">2019</p>
+              <p class="text-sm text-earth-light mt-1">Año de fundación</p>
+            </div>
+            <div>
+              <p class="text-3xl font-extrabold text-primary font-display">12k</p>
+              <p class="text-sm text-earth-light mt-1">Benedicts servidos</p>
+            </div>
+            <div>
+              <p class="text-3xl font-extrabold text-primary font-display">4.9★</p>
+              <p class="text-sm text-earth-light mt-1">Valoración media</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-primary/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 text-center">
+        <div>
+          <div class="mx-auto flex items-center justify-center h-16 w-16 rounded-full bg-white shadow-sm mb-6">
+            <span class="text-3xl" role="img" aria-label="Planta">🌱</span>
+          </div>
+          <h3 class="text-xl font-bold text-earth mb-3 font-display">Producto Local</h3>
+          <p class="text-earth-light">Trabajamos con proveedores de proximidad para garantizar la máxima frescura y calidad.</p>
+        </div>
+        <div>
+          <div class="mx-auto flex items-center justify-center h-16 w-16 rounded-full bg-white shadow-sm mb-6">
+            <span class="text-3xl" role="img" aria-label="Destello">✨</span>
+          </div>
+          <h3 class="text-xl font-bold text-earth mb-3 font-display">Good Vibes Only</h3>
+          <p class="text-earth-light">Un espacio diseñado para que desconectes, disfrutes y compartas buenos momentos.</p>
+        </div>
+        <div>
+          <div class="mx-auto flex items-center justify-center h-16 w-16 rounded-full bg-white shadow-sm mb-6">
+            <span class="text-3xl" role="img" aria-label="Huevo">🍳</span>
+          </div>
+          <h3 class="text-xl font-bold text-earth mb-3 font-display">Cocina Creativa</h3>
+          <p class="text-earth-light">Le damos una vuelta a los clásicos del brunch con toques sorprendentes y mucho mimo.</p>
+        </div>
+        <div>
+          <div class="mx-auto flex items-center justify-center h-16 w-16 rounded-full bg-white shadow-sm mb-6">
+            <span class="text-3xl" role="img" aria-label="Reloj">⏰</span>
+          </div>
+          <h3 class="text-xl font-bold text-earth mb-3 font-display">Brunch All-Day</h3>
+          <p class="text-earth-light">Porque a las 4 de la tarde también apetece un buen benedict. Servimos brunch todo el día.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-surface" id="carta">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-extrabold text-earth sm:text-4xl font-display">Nuestros Favoritos</h2>
+        <p class="mt-4 text-lg text-earth-light">Los platos que nos han hecho famosos. Cuidado, enganchan.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <article class="bg-white rounded-[32px] overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group flex flex-col h-full border border-earth/5">
+          <div class="relative h-48 overflow-hidden">
+            <img alt="Classic Benedict" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" src="img/classic-benedict.jpg"/>
+            <div class="absolute top-4 right-4 bg-primary text-earth font-bold px-3 py-1 rounded-full text-sm">Top Ventas</div>
+          </div>
+          <div class="p-6 flex flex-col flex-grow">
+            <h3 class="text-xl font-bold text-earth mb-2 font-display">Classic Benedict</h3>
+            <p class="text-earth-light text-sm mb-4 flex-grow">Dos huevos poché ecológicos sobre brioche tostado, bacon ahumado crujiente y nuestra salsa holandesa casera.</p>
+            <div class="flex justify-between items-center mt-auto">
+              <span class="text-2xl font-extrabold text-terra font-display">12.50€</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="bg-white rounded-[32px] overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group flex flex-col h-full border border-earth/5">
+          <div class="relative h-48 overflow-hidden">
+            <img alt="Avo Toast Deluxe" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" src="img/avo-toast.jpg"/>
+          </div>
+          <div class="p-6 flex flex-col flex-grow">
+            <h3 class="text-xl font-bold text-earth mb-2 font-display">Avo Toast Deluxe</h3>
+            <p class="text-earth-light text-sm mb-4 flex-grow">Tostada de masa madre, aguacate machacado, granada, rabanitos, huevo poché y dukkah de pistachos.</p>
+            <div class="flex justify-between items-center mt-auto">
+              <span class="text-2xl font-extrabold text-terra font-display">11.90€</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="bg-white rounded-[32px] overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group flex flex-col h-full border border-earth/5">
+          <div class="relative h-48 overflow-hidden">
+            <img alt="Truffle Mushroom" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" src="img/truffle-mushroom.jpg"/>
+          </div>
+          <div class="p-6 flex flex-col flex-grow">
+            <h3 class="text-xl font-bold text-earth mb-2 font-display">Truffle Mushroom</h3>
+            <p class="text-earth-light text-sm mb-4 flex-grow">Setas de temporada salteadas, crema de trufa, espinacas baby y huevo a baja temperatura sobre pan rústico.</p>
+            <div class="flex justify-between items-center mt-auto">
+              <span class="text-2xl font-extrabold text-terra font-display">13.50€</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="bg-white rounded-[32px] overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group flex flex-col h-full border border-earth/5">
+          <div class="relative h-48 overflow-hidden">
+            <img alt="Pancakes Locos" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" src="img/pancakes.jpg"/>
+          </div>
+          <div class="p-6 flex flex-col flex-grow">
+            <h3 class="text-xl font-bold text-earth mb-2 font-display">Pancakes Locos</h3>
+            <p class="text-earth-light text-sm mb-4 flex-grow">Torre de tortitas esponjosas, crema de mascarpone, frutos rojos frescos, sirope de arce y crumble de galleta.</p>
+            <div class="flex justify-between items-center mt-auto">
+              <span class="text-2xl font-extrabold text-terra font-display">10.50€</span>
+            </div>
+          </div>
+        </article>
+      </div>
+      <div class="mt-12 text-center">
+        <a class="inline-flex items-center justify-center px-8 py-4 border-2 border-primary text-lg font-bold rounded-full text-earth bg-transparent hover:bg-primary transition-all btn-squish" href="#carta-completa">Ver carta completa</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-surface" id="carta-completa">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-earth font-display">La Carta Completa</h2>
+        <p class="mt-4 text-lg text-earth-light">Todo el buen rollo en forma de plato.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-10">
+        <div>
+          <h3 class="text-2xl font-bold text-earth mb-6 flex items-center gap-3 font-display"><span class="w-10 h-10 rounded-full bg-primary flex items-center justify-center">🥚</span> Huevos</h3>
+          <ul class="space-y-5">
+            <li class="flex justify-between items-start gap-4 border-b border-earth/10 pb-4">
+              <div><p class="font-bold text-earth">Classic Benedict <span class="ml-2 text-xs text-terra bg-primary/20 px-2 py-0.5 rounded-full">Top ventas</span></p><p class="text-sm text-earth-light">Brioche, bacon, holandesa</p></div>
+              <span class="font-extrabold text-terra font-display shrink-0">12.50€</span>
+            </li>
+            <li class="flex justify-between items-start gap-4 border-b border-earth/10 pb-4">
+              <div><p class="font-bold text-earth">Florentine</p><p class="text-sm text-earth-light">Espinacas, holandesa, pan rústico</p></div>
+              <span class="font-extrabold text-terra font-display shrink-0">11.90€</span>
+            </li>
+            <li class="flex justify-between items-start gap-4 border-b border-earth/10 pb-4">
+              <div><p class="font-bold text-earth">Royale</p><p class="text-sm text-earth-light">Salmón ahumado, aguacate, huevo poché</p></div>
+              <span class="font-extrabold text-terra font-display shrink-0">13.90€</span>
+            </li>
+            <li class="flex justify-between items-start gap-4">
+              <div><p class="font-bold text-earth">Truffle Mushroom</p><p class="text-sm text-earth-light">Setas, crema de trufa, huevo a baja temperatura</p></div>
+              <span class="font-extrabold text-terra font-display shrink-0">13.50€</span>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-2xl font-bold text-earth mb-6 flex items-center gap-3 font-display"><span class="w-10 h-10 rounded-full bg-primary flex items-center justify-center">🥞</span> Dulce &amp; Brunch</h3>
+          <ul class="space-y-5">
+            <li class="flex justify-between items-start gap-4 border-b border-earth/10 pb-4">
+              <div><p class="font-bold text-earth">Pancakes Locos</p><p class="text-sm text-earth-light">Mascarpone, frutos rojos, sirope de arce</p></div>
+              <span class="font-extrabold text-terra font-display shrink-0">10.50€</span>
+            </li>
+            <li class="flex justify-between items-start gap-4 border-b border-earth/10 pb-4">
+              <div><p class="font-bold text-earth">French Toast</p><p class="text-sm text-earth-light">Brioche, plátano caramelizado, yogur</p></div>
+              <span class="font-extrabold text-terra font-display shrink-0">9.90€</span>
+            </li>
+            <li class="flex justify-between items-start gap-4 border-b border-earth/10 pb-4">
+              <div><p class="font-bold text-earth">Avo Toast Deluxe</p><p class="text-sm text-earth-light">Masa madre, aguacate, granada, dukkah</p></div>
+              <span class="font-extrabold text-terra font-display shrink-0">11.90€</span>
+            </li>
+            <li class="flex justify-between items-start gap-4">
+              <div><p class="font-bold text-earth">Yogur Bowl</p><p class="text-sm text-earth-light">Granola casera, fruta de temporada, miel</p></div>
+              <span class="font-extrabold text-terra font-display shrink-0">8.50€</span>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-2xl font-bold text-earth mb-6 flex items-center gap-3 font-display"><span class="w-10 h-10 rounded-full bg-primary flex items-center justify-center">☕</span> Café de Especialidad</h3>
+          <ul class="space-y-5">
+            <li class="flex justify-between items-start gap-4 border-b border-earth/10 pb-4">
+              <div><p class="font-bold text-earth">Flat White</p><p class="text-sm text-earth-light">Origen único, doble ristretto</p></div>
+              <span class="font-extrabold text-terra font-display shrink-0">3.20€</span>
+            </li>
+            <li class="flex justify-between items-start gap-4 border-b border-earth/10 pb-4">
+              <div><p class="font-bold text-earth">Capuchino</p><p class="text-sm text-earth-light">Espuma sedosa de leche</p></div>
+              <span class="font-extrabold text-terra font-display shrink-0">3.00€</span>
+            </li>
+            <li class="flex justify-between items-start gap-4">
+              <div><p class="font-bold text-earth">Latte Vegano</p><p class="text-sm text-earth-light">Leche de avena, toques tostados</p></div>
+              <span class="font-extrabold text-terra font-display shrink-0">3.40€</span>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-2xl font-bold text-earth mb-6 flex items-center gap-3 font-display"><span class="w-10 h-10 rounded-full bg-primary flex items-center justify-center">🥤</span> Zumos &amp; Smoothies</h3>
+          <ul class="space-y-5">
+            <li class="flex justify-between items-start gap-4 border-b border-earth/10 pb-4">
+              <div><p class="font-bold text-earth">Smoothie Berry</p><p class="text-sm text-earth-light">Frutos rojos, plátano, avena</p></div>
+              <span class="font-extrabold text-terra font-display shrink-0">5.50€</span>
+            </li>
+            <li class="flex justify-between items-start gap-4 border-b border-earth/10 pb-4">
+              <div><p class="font-bold text-earth">Zumo de Naranja</p><p class="text-sm text-earth-light">Recién exprimido</p></div>
+              <span class="font-extrabold text-terra font-display shrink-0">3.50€</span>
+            </li>
+            <li class="flex justify-between items-start gap-4">
+              <div><p class="font-bold text-earth">Mimosa Eggo</p><p class="text-sm text-earth-light">Cava, zumo de naranja, toque de miel</p></div>
+              <span class="font-extrabold text-terra font-display shrink-0">6.00€</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-surface-dim" id="catering">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="lg:grid lg:grid-cols-2 lg:gap-16 items-center">
+        <div class="mb-12 lg:mb-0">
+          <span class="inline-block px-4 py-1 rounded-full bg-primary text-earth text-xs font-bold uppercase tracking-wider mb-6">Eventos &amp; Catering</span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-earth mb-6 font-display">Llevamos el brunch a tu evento</h2>
+          <p class="text-lg text-earth-light mb-6">
+            Cumpleaños, desayunos de empresa, bodas y cualquier excusa para comer bien. Preparamos mesas de brunch para 10 a 200 personas, con montaje y servicio incluidos.
+          </p>
+          <ul class="space-y-4 mb-8">
+            <li class="flex items-start gap-3">
+              <span class="w-6 h-6 rounded-full bg-primary flex items-center justify-center text-sm shrink-0">✓</span>
+              <p class="text-earth-light">Estaciones de huevos benedict en vivo</p>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="w-6 h-6 rounded-full bg-primary flex items-center justify-center text-sm shrink-0">✓</span>
+              <p class="text-earth-light">Barra de café de especialidad con barista</p>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="w-6 h-6 rounded-full bg-primary flex items-center justify-center text-sm shrink-0">✓</span>
+              <p class="text-earth-light">Menús vegetarianos, veganos y sin gluten</p>
+            </li>
+          </ul>
+          <a id="catering-call" class="inline-flex items-center justify-center px-8 py-4 bg-primary text-earth text-lg font-bold rounded-full hover:bg-primary-hover shadow-lg transition-all btn-squish" href="tel:+34854500270" aria-label="Llamar al local para pedir presupuesto de catering">📞 Pedir presupuesto: +34 854 500 270</a>
+        </div>
+        <div class="relative">
+          <div class="animate-blob overflow-hidden shadow-2xl">
+            <img alt="Mesa de catering de Eggocentrico" class="w-full h-80 lg:h-96 object-cover" loading="lazy" src="img/truffle-mushroom.jpg"/>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-surface-dim" id="localizacion">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-14">
+        <span class="inline-block px-4 py-1 rounded-full bg-primary text-earth text-xs font-bold uppercase tracking-wider mb-6">Localización</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-earth font-display">A 5 minutos del Bernabéu</h2>
+        <p class="mt-4 text-lg text-earth-light">Estamos donde empieza el buen rollo de Madrid.</p>
+      </div>
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div class="lg:col-span-2 rounded-[32px] overflow-hidden shadow-lg border border-earth/5 min-h-[320px]">
+          <iframe title="Mapa de Eggocentrico en Madrid" src="https://maps.google.com/maps?q=C%2F%20de%20Guti%C3%A9rrez%20Solana%2C%206%2C%2028036%20Madrid&t=&z=16&ie=UTF8&iwloc=&output=embed" class="w-full h-full min-h-[320px]" loading="lazy" allowfullscreen="" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        <div class="bg-white rounded-[32px] p-8 shadow-lg border border-earth/5 flex flex-col gap-6">
+          <div>
+            <h3 class="text-lg font-bold text-earth mb-2 flex items-center gap-2 font-display"><svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg> Dirección</h3>
+            <p class="text-earth-light">C/ de Gutiérrez Solana, 6<br/>Chamartín, 28036 Madrid<br/><span class="text-sm">Cerca del Estadio Santiago Bernabéu</span></p>
+          </div>
+          <div>
+            <h3 class="text-lg font-bold text-earth mb-2 flex items-center gap-2 font-display"><svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg> Horario</h3>
+            <ul class="text-earth-light space-y-1">
+              <li class="flex justify-between gap-4"><span>Lunes - Viernes</span><span>09:00 - 17:00</span></li>
+              <li class="flex justify-between gap-4"><span>Sábado - Domingo</span><span>09:00 - 18:00</span></li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-lg font-bold text-earth mb-2 flex items-center gap-2 font-display"><svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg> Contacto</h3>
+            <p class="text-earth-light">
+              <a class="hover:text-primary transition-colors" href="tel:+34854500270">+34 854 500 270</a><br/>
+              <a class="hover:text-primary transition-colors" href="mailto:eggo@eggocentrico.es">eggo@eggocentrico.es</a>
+            </p>
+          </div>
+          <a href="https://www.google.es/maps/place/Eggocentrico+-+Brunch,+Lunch+y+Caf%C3%A9+Especialidad/@40.4504774,-3.6905728,16z/data=!3m1!4b1!4m6!3m5!1s0xd42290aebf2e215:0x567d8b81387911dd!8m2!3d40.4504733!4d-3.6879979!16s%2Fg%2F11x2qyg9gv?entry=ttu&amp;g_ep=EgoyMDI2MDgxOS4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener" class="mt-auto inline-flex items-center justify-center bg-earth text-white font-bold py-3 px-6 rounded-full hover:opacity-90 transition-opacity btn-squish">Cómo llegar</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-surface-dim" id="delivery">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <span class="inline-block px-4 py-1 rounded-full bg-primary text-earth text-xs font-bold uppercase tracking-wider mb-6">Delivery</span>
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-earth mb-6 font-display">El brunch, en tu sofá</h2>
+      <p class="text-lg text-earth-light max-w-2xl mx-auto mb-10">
+        Pide por nuestras plataformas y te lo llevamos calentito a casa. Entrega en 30-40 minutos en toda la zona del Bernabéu y Chamberí.
+      </p>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-12">
+        <a href="https://glovoapp.com/es/es/madrid/stores/eggocentrico-madrid" target="_blank" rel="noopener" aria-label="Pedir por Glovo (se abre en nueva pestaña)" class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all border border-earth/5 hover:-translate-y-1 btn-squish">
+          <img src="img/glovo.svg" alt="Logo de Glovo" class="h-10 w-auto block mx-auto mb-4"/>
+          <span class="font-bold text-earth block">Glovo</span>
+          <span class="text-sm text-earth-light">Entrega en 30 min</span>
+        </a>
+        <a href="https://www.ubereats.com/es/store/eggocentrico-egg-shop-%26-brunch-culture/1cHJsn2GWwS3y2GhAiNMTg" target="_blank" rel="noopener" aria-label="Pedir por Uber Eats (se abre en nueva pestaña)" class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all border border-earth/5 hover:-translate-y-1 btn-squish">
+          <img src="img/ubereats.svg" alt="Logo de Uber Eats" class="h-10 w-auto block mx-auto mb-4"/>
+          <span class="font-bold text-earth block">Uber Eats</span>
+          <span class="text-sm text-earth-light">Todo el día</span>
+        </a>
+        <button type="button" id="pickup-btn" class="w-full text-left bg-white rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all border border-earth/5 hover:-translate-y-1 btn-squish cursor-pointer">
+          <span class="text-4xl block mb-3" role="img" aria-label="Recogida en local">🏠</span>
+          <span class="font-bold text-earth block">Para llevar</span>
+          <span class="text-sm text-earth-light">Pide online y recoge en el local, 10% dto.</span>
+        </button>
+      </div>
+      <a class="inline-flex items-center justify-center px-8 py-4 bg-primary text-earth text-lg font-bold rounded-full hover:bg-primary-hover shadow-lg transition-all btn-squish" href="tel:+34854500270">📞 Llamar y pedir: +34 854 500 270</a>
+    </div>
+  </section>
+
+
+  <section class="bg-earth py-16">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-primary rounded-[40px] p-8 md:p-12 text-center shadow-2xl relative overflow-hidden">
+        <div class="absolute top-0 right-0 -mt-10 -mr-10 w-40 h-40 bg-white opacity-20 rounded-full"></div>
+        <div class="absolute bottom-0 left-0 -mb-10 -ml-10 w-40 h-40 bg-white opacity-20 rounded-full"></div>
+        <h2 class="text-3xl md:text-5xl font-extrabold text-earth mb-6 relative z-10 font-display">¿Hambre de cosas buenas?</h2>
+        <p class="text-lg text-earth/80 mb-10 max-w-2xl mx-auto font-medium relative z-10">
+          Asegura tu mesa para el fin de semana o pide que te lo llevemos a casa. Tú decides cómo disfrutar de Eggocentrico.
+        </p>
+        <div class="flex flex-col sm:flex-row justify-center gap-6 relative z-10">
+          <a class="inline-flex items-center justify-center px-8 py-4 bg-earth text-white text-lg font-bold rounded-full hover:bg-earth-light transition-colors shadow-lg btn-squish" href="https://www.google.com/maps/reserve/v/dine/c/ZW0ie_Gpi_E?source=pa&amp;opi=79508299&amp;hl=es-ES&amp;gei=-nSJauThH8qwhbIP94uL0AE&amp;ahbb=1&amp;sourceurl=https://www.google.es/maps/preview/place?authuser%3D0%26hl%3Des%26gl%3Des%26pb%3D!1m20!1s0xd42290aebf2e215:0x567d8b81387911dd!3m12!1m3!1d8716.37713402028!2d-3.6521859500000002!3d40.424672650000005!2m3!1f0!2f0!3f0!3m2!1i1280!2i551!4f13.1!4m2!3d40.4504733!4d-3.6879979!5e0!9e0!11s/g/11x2qyg9gv!12m4!2m3!1i360!2i120!4i8!13m57!2m2!1i203!2i100!3m2!2i4!5b1!6m6!1m2!1i86!2i86!1m2!1i408!2i240!7m33!1m3!1e1!2b0!3e3!1m3!1e2!2b1!3e2!1m3!1e2!2b0!3e3!1m3!1e8!2b0!3e3!1m3!1e10!2b0!3e3!1m3!1e10!2b1!3e2!1m3!1e10!2b0!3e4!1m3!1e9!2b1!3e2!2b1!9b0!15m8!1m7!1m2!1m1!1e2!2m2!1i195!2i195!3i20!14m6!1s9HSJas7NJI67hbIP14WzmQI:30!2s1i:0,t:6986,p:9HSJas7NJI67hbIP14WzmQI:30!7e81!12e15!17s9HSJas7NJI67hbIP14WzmQI:44!18e3!15m110!1m28!13m9!2b1!3b1!4b1!6i1!8b1!9b1!14b1!20b1!25b1!18m17!3b1!4b1!5b1!6b1!9b1!13b1!14b1!17b1!20b1!21b1!22b1!30b1!32b1!33m1!1b1!34b1!36e2!10m1!8e3!11m1!3e1!17b1!20m2!1e3!1e6!24b1!25b1!26b1!27b1!29b1!30m1!2b1!36b1!37b1!39m3!2m2!2i1!3i1!43b1!52b1!54m1!1b1!55b1!56m1!1b1!61m2!1m1!1e1!65m5!3m4!1m3!1m2!1i224!2i298!72m22!1m8!2b1!5b1!7b1!12m4!1b1!2b1!4m1!1e1!4b1!8m10!1m6!4m1!1e1!4m1!1e3!4m1!1e4!3sother_user_google_review_posts__and__hotel_and_vr_partner_review_posts!6m1!1e1!9b1!89b1!90m2!1m1!1e2!98m3!1b1!2b1!3b1!103b1!113b1!114m3!1b1!2m1!1b1!117b1!122m1!1b1!126b1!127b1!128m1!1b1!21m28!1m6!1m2!1i0!2i0!2m2!1i530!2i551!1m6!1m2!1i1230!2i0!2m2!1i1280!2i551!1m6!1m2!1i0!2i531!2m2!1i1280!2i551!22m1!1e81!29m0!30m6!3b1!6m1!2b1!7m1!2b1!9b1!34m5!7b1!10b1!14b1!15m1!1b0!37i791!39sEggocentrico%2B-%2BBrunch,%2BLunch%2By%2BCaf%25C3%25A9%2BEspecialidad,%2BCalle%2Bde%2BGuti%25C3%25A9rrez%2BSolana,%2BMadrid%26q%3DEggocentrico%2B-%2BBrunch,%2BLunch%2By%2BCaf%25C3%25A9%2BEspecialidad,%2BCalle%2Bde%2BGuti%25C3%25A9rrez%2BSolana,%2BMadrid" target="_blank" rel="noopener">Reservar una mesa</a>
+          <a class="inline-flex items-center justify-center px-8 py-4 bg-white text-earth text-lg font-bold rounded-full hover:bg-surface-dim transition-colors shadow-lg btn-squish" href="#delivery">Pedir Delivery</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="bg-surface-dim pt-16 pb-8 border-t border-earth/10">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+      <div class="md:col-span-1">
+        <a href="#inicio" class="text-2xl font-bold tracking-tight text-earth flex items-center gap-2 mb-4 font-display">
+          <svg class="w-6 h-6 text-primary" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 2C8.13 2 5 6.18 5 11.5C5 16.75 8.13 22 12 22C15.87 22 19 16.75 19 11.5C19 6.18 15.87 2 12 2Z"></path>
+          </svg>
+          Eggocentrico
+        </a>
+        <p class="text-earth-light text-sm mb-6">El all-day brunch que Madrid necesitaba. Buen rollo, mejor comida.</p>
+        <div class="flex space-x-4">
+          <a href="https://www.instagram.com/eggocentrico.madrid/" target="_blank" rel="noopener" class="text-earth-light hover:text-primary transition-colors" aria-label="Instagram de Eggocentrico (@eggocentrico.madrid)">
+            <svg aria-hidden="true" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+              <path clip-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.476 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" fill-rule="evenodd"></path>
+            </svg>
+          </a>
+          <a href="https://www.youtube.com/channel/UC9BDnCUrPq64ZXflzV-CyrQ" target="_blank" rel="noopener" class="text-earth-light hover:text-primary transition-colors" aria-label="Canal de YouTube de Eggocentrico">
+            <svg aria-hidden="true" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+      <div>
+        <h4 class="text-earth font-bold uppercase tracking-wider mb-4 text-sm">Explora</h4>
+        <ul class="space-y-3">
+          <li><a class="text-earth-light hover:text-primary transition-colors text-sm font-medium" href="#historia">Historia</a></li>
+          <li><a class="text-earth-light hover:text-primary transition-colors text-sm font-medium" href="#carta">Nuestra Carta</a></li>
+          <li><a class="text-earth-light hover:text-primary transition-colors text-sm font-medium" href="https://www.google.com/maps/reserve/v/dine/c/ZW0ie_Gpi_E?source=pa&amp;opi=79508299&amp;hl=es-ES&amp;gei=-nSJauThH8qwhbIP94uL0AE&amp;ahbb=1&amp;sourceurl=https://www.google.es/maps/preview/place?authuser%3D0%26hl%3Des%26gl%3Des%26pb%3D!1m20!1s0xd42290aebf2e215:0x567d8b81387911dd!3m12!1m3!1d8716.37713402028!2d-3.6521859500000002!3d40.424672650000005!2m3!1f0!2f0!3f0!3m2!1i1280!2i551!4f13.1!4m2!3d40.4504733!4d-3.6879979!5e0!9e0!11s/g/11x2qyg9gv!12m4!2m3!1i360!2i120!4i8!13m57!2m2!1i203!2i100!3m2!2i4!5b1!6m6!1m2!1i86!2i86!1m2!1i408!2i240!7m33!1m3!1e1!2b0!3e3!1m3!1e2!2b1!3e2!1m3!1e2!2b0!3e3!1m3!1e8!2b0!3e3!1m3!1e10!2b0!3e3!1m3!1e10!2b1!3e2!1m3!1e10!2b0!3e4!1m3!1e9!2b1!3e2!2b1!9b0!15m8!1m7!1m2!1m1!1e2!2m2!1i195!2i195!3i20!14m6!1s9HSJas7NJI67hbIP14WzmQI:30!2s1i:0,t:6986,p:9HSJas7NJI67hbIP14WzmQI:30!7e81!12e15!17s9HSJas7NJI67hbIP14WzmQI:44!18e3!15m110!1m28!13m9!2b1!3b1!4b1!6i1!8b1!9b1!14b1!20b1!25b1!18m17!3b1!4b1!5b1!6b1!9b1!13b1!14b1!17b1!20b1!21b1!22b1!30b1!32b1!33m1!1b1!34b1!36e2!10m1!8e3!11m1!3e1!17b1!20m2!1e3!1e6!24b1!25b1!26b1!27b1!29b1!30m1!2b1!36b1!37b1!39m3!2m2!2i1!3i1!43b1!52b1!54m1!1b1!55b1!56m1!1b1!61m2!1m1!1e1!65m5!3m4!1m3!1m2!1i224!2i298!72m22!1m8!2b1!5b1!7b1!12m4!1b1!2b1!4m1!1e1!4b1!8m10!1m6!4m1!1e1!4m1!1e3!4m1!1e4!3sother_user_google_review_posts__and__hotel_and_vr_partner_review_posts!6m1!1e1!9b1!89b1!90m2!1m1!1e2!98m3!1b1!2b1!3b1!103b1!113b1!114m3!1b1!2m1!1b1!117b1!122m1!1b1!126b1!127b1!128m1!1b1!21m28!1m6!1m2!1i0!2i0!2m2!1i530!2i551!1m6!1m2!1i1230!2i0!2m2!1i1280!2i551!1m6!1m2!1i0!2i531!2m2!1i1280!2i551!22m1!1e81!29m0!30m6!3b1!6m1!2b1!7m1!2b1!9b1!34m5!7b1!10b1!14b1!15m1!1b0!37i791!39sEggocentrico%2B-%2BBrunch,%2BLunch%2By%2BCaf%25C3%25A9%2BEspecialidad,%2BCalle%2Bde%2BGuti%25C3%25A9rrez%2BSolana,%2BMadrid%26q%3DEggocentrico%2B-%2BBrunch,%2BLunch%2By%2BCaf%25C3%25A9%2BEspecialidad,%2BCalle%2Bde%2BGuti%25C3%25A9rrez%2BSolana,%2BMadrid" target="_blank" rel="noopener">Reservas</a></li>
+          <li><a class="text-earth-light hover:text-primary transition-colors text-sm font-medium" href="#delivery">Delivery</a></li>
+          <li><a class="text-earth-light hover:text-primary transition-colors text-sm font-medium" href="#catering">Eventos &amp; Catering</a></li>
+          <li><a class="text-earth-light hover:text-primary transition-colors text-sm font-medium" href="#localizacion">Localización</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-earth font-bold uppercase tracking-wider mb-4 text-sm">Visítanos</h4>
+        <ul class="space-y-3 text-sm text-earth-light font-medium">
+          <li>C/ de Gutiérrez Solana, 6</li>
+          <li>Chamartín, 28036 Madrid</li>
+          <li>(Cerca del Estadio S. Bernabéu)</li>
+          <li class="pt-2"><a class="hover:text-primary transition-colors" href="mailto:eggo@eggocentrico.es">eggo@eggocentrico.es</a></li>
+          <li><a class="hover:text-primary transition-colors" href="tel:+34854500270">+34 854 500 270</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-earth font-bold uppercase tracking-wider mb-4 text-sm">Horario</h4>
+        <ul class="space-y-3 text-sm text-earth-light font-medium">
+          <li class="flex justify-between gap-4"><span>Lunes - Viernes</span> <span>09:00 - 17:00</span></li>
+          <li class="flex justify-between gap-4"><span>Sábado - Domingo</span> <span>09:00 - 18:00</span></li>
+          <li class="pt-4">
+            <span class="inline-block px-3 py-1 bg-green-100 text-green-800 rounded-full text-xs font-bold">La cocina no cierra</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="border-t border-earth/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+      <p class="text-sm text-earth-light">© <span id="year">2026</span> Eggocentrico Brunch. Todos los derechos reservados.</p>
+      <div class="flex space-x-6 text-sm text-earth-light">
+        <a class="hover:text-primary" href="#inicio">Aviso Legal</a>
+        <a class="hover:text-primary" href="#inicio">Privacidad</a>
+        <a class="hover:text-primary" href="#inicio">Cookies</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div id="pickup-modal" class="fixed inset-0 z-[70] hidden items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="pickup-title">
+  <div id="pickup-overlay" class="absolute inset-0 bg-black/50"></div>
+  <div class="relative bg-surface rounded-[32px] max-w-lg w-full p-8 shadow-2xl max-h-[90vh] overflow-y-auto">
+    <button id="pickup-close" type="button" aria-label="Cerrar" class="absolute top-4 right-4 text-earth-light hover:text-earth transition-colors">
+      <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+    </button>
+    <h3 id="pickup-title" class="text-2xl font-bold text-earth mb-2 font-display">Pedido para recoger</h3>
+    <p class="text-sm text-earth-light mb-6">Rellena tu pedido y te lo preparamos. Recógelo en el local con un 10% de descuento.</p>
+    <form id="pickup-form" novalidate>
+      <div class="mb-4">
+        <label for="pickup-name" class="block text-sm font-semibold text-earth mb-1">Nombre</label>
+        <input id="pickup-name" name="name" type="text" required autocomplete="name" placeholder="Tu nombre"
+          class="w-full rounded-xl border-2 border-earth/20 px-4 py-3 focus:border-primary focus:outline-none transition-colors"/>
+      </div>
+      <div class="mb-4">
+        <label for="pickup-phone" class="block text-sm font-semibold text-earth mb-1">Teléfono</label>
+        <input id="pickup-phone" name="phone" type="tel" required autocomplete="tel" placeholder="+34 854 500 270"
+          class="w-full rounded-xl border-2 border-earth/20 px-4 py-3 focus:border-primary focus:outline-none transition-colors"/>
+      </div>
+      <div class="mb-4">
+        <label class="block text-sm font-semibold text-earth mb-2">Añade platos con un clic</label>
+        <div class="flex flex-wrap gap-2" id="pickup-chips">
+          <button type="button" data-item="Classic Benedict" class="chip-btn text-xs font-bold border-2 border-primary text-earth rounded-full px-3 py-1.5 hover:bg-primary transition-colors">Classic Benedict</button>
+          <button type="button" data-item="Avo Toast Deluxe" class="chip-btn text-xs font-bold border-2 border-primary text-earth rounded-full px-3 py-1.5 hover:bg-primary transition-colors">Avo Toast Deluxe</button>
+          <button type="button" data-item="Pancakes Locos" class="chip-btn text-xs font-bold border-2 border-primary text-earth rounded-full px-3 py-1.5 hover:bg-primary transition-colors">Pancakes Locos</button>
+          <button type="button" data-item="Truffle Mushroom" class="chip-btn text-xs font-bold border-2 border-primary text-earth rounded-full px-3 py-1.5 hover:bg-primary transition-colors">Truffle Mushroom</button>
+          <button type="button" data-item="Café de especialidad" class="chip-btn text-xs font-bold border-2 border-primary text-earth rounded-full px-3 py-1.5 hover:bg-primary transition-colors">Café</button>
+        </div>
+      </div>
+      <div class="mb-4">
+        <label for="pickup-order" class="block text-sm font-semibold text-earth mb-1">Tu pedido</label>
+        <textarea id="pickup-order" name="order" rows="3" required placeholder="Ej.: 2x Classic Benedict, 1x Pancakes Locos..."
+          class="w-full rounded-xl border-2 border-earth/20 px-4 py-3 focus:border-primary focus:outline-none transition-colors"></textarea>
+      </div>
+      <div class="mb-6">
+        <label for="pickup-time" class="block text-sm font-semibold text-earth mb-1">Hora de recogida</label>
+        <select id="pickup-time" name="time" class="w-full rounded-xl border-2 border-earth/20 px-4 py-3 focus:border-primary focus:outline-none transition-colors bg-white">
+          <option value="" disabled selected>Elige una hora</option>
+          <option>09:30</option><option>10:00</option><option>10:30</option><option>11:00</option>
+          <option>11:30</option><option>12:00</option><option>12:30</option><option>13:00</option>
+          <option>13:30</option><option>14:00</option><option>14:30</option><option>15:00</option>
+          <option>15:30</option><option>16:00</option><option>16:30</option><option>17:00</option>
+        </select>
+      </div>
+      <div id="pickup-success" class="hidden bg-green-50 border border-green-200 rounded-2xl p-4 mb-4">
+        <p class="text-sm font-bold text-green-800 mb-1">Pedido preparado ✓</p>
+        <p id="pickup-success-text" class="text-xs text-green-700 mb-3"></p>
+        <a id="pickup-whatsapp" href="#" target="_blank" rel="noopener" class="inline-flex items-center justify-center w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 rounded-full transition-colors btn-squish">Enviar por WhatsApp</a>
+      </div>
+      <button type="submit" class="w-full bg-primary hover:bg-primary-hover text-earth font-bold py-3.5 rounded-full shadow-lg transition-all btn-squish">Confirmar pedido</button>
+      <p id="pickup-msg" class="hidden mt-3 text-sm font-semibold text-center"></p>
+    </form>
+  </div>
+</div>
+
+<div id="toast" class="hidden-toast fixed bottom-6 left-1/2 -translate-x-1/2 z-[60] bg-earth text-white px-6 py-4 rounded-full shadow-2xl text-sm font-semibold max-w-[90vw] text-center" role="status" aria-live="polite"></div>
+
+<script>
+  var menuBtn = document.getElementById('menu-btn');
+  var mobileMenu = document.getElementById('mobile-menu');
+  var iconOpen = document.getElementById('menu-icon-open');
+  var iconClose = document.getElementById('menu-icon-close');
+
+  function closeMenu() {
+    mobileMenu.classList.add('hidden');
+    iconOpen.classList.remove('hidden');
+    iconClose.classList.add('hidden');
+    menuBtn.setAttribute('aria-expanded', 'false');
+  }
+
+  menuBtn.addEventListener('click', function () {
+    var expanded = menuBtn.getAttribute('aria-expanded') === 'true';
+    if (expanded) {
+      closeMenu();
+    } else {
+      mobileMenu.classList.remove('hidden');
+      iconOpen.classList.add('hidden');
+      iconClose.classList.remove('hidden');
+      menuBtn.setAttribute('aria-expanded', 'true');
+    }
+  });
+
+  mobileMenu.querySelectorAll('a').forEach(function (link) {
+    link.addEventListener('click', closeMenu);
+  });
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  var header = document.getElementById('site-header');
+  window.addEventListener('scroll', function () {
+    if (window.scrollY > 10) {
+      header.classList.add('shadow-lg');
+    } else {
+      header.classList.remove('shadow-lg');
+    }
+  });
+
+  var toast = document.getElementById('toast');
+  var toastTimer = null;
+  function showToast(message, success) {
+    toast.textContent = message;
+    toast.classList.remove('hidden-toast');
+    toast.style.backgroundColor = success ? '#4A3B32' : '#BA1A1A';
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () {
+      toast.classList.add('hidden-toast');
+    }, 4000);
+  }
+
+  function setInputError(input, hasError) {
+    input.classList.toggle('border-red-500', hasError);
+    input.classList.toggle('border-earth/20', !hasError);
+  }
+var pickupModal = document.getElementById('pickup-modal');
+  var pickupBtn = document.getElementById('pickup-btn');
+  var pickupOverlay = document.getElementById('pickup-overlay');
+  var pickupClose = document.getElementById('pickup-close');
+  var pickupForm = document.getElementById('pickup-form');
+  var pickupSuccess = document.getElementById('pickup-success');
+  var pickupSuccessText = document.getElementById('pickup-success-text');
+  var pickupWhatsApp = document.getElementById('pickup-whatsapp');
+  var pickupMsg = document.getElementById('pickup-msg');
+
+  function openPickup() {
+    pickupModal.classList.remove('hidden');
+    pickupModal.classList.add('flex');
+    pickupBtn.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closePickup() {
+    pickupModal.classList.add('hidden');
+    pickupModal.classList.remove('flex');
+    pickupBtn.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+
+  pickupBtn.addEventListener('click', openPickup);
+  pickupClose.addEventListener('click', closePickup);
+  pickupOverlay.addEventListener('click', closePickup);
+  document.addEventListener('keydown', function (event) {
+    if (event.key === 'Escape') { closePickup(); }
+  });
+
+  document.querySelectorAll('.chip-btn').forEach(function (chip) {
+    chip.addEventListener('click', function () {
+      var order = document.getElementById('pickup-order');
+      var line = (order.value.trim() ? '\n' : '') + '- ' + chip.getAttribute('data-item') + ' x1';
+      order.value = order.value + line;
+      order.focus();
+    });
+  });
+
+  pickupForm.addEventListener('submit', function (event) {
+    event.preventDefault();
+    var name = document.getElementById('pickup-name');
+    var phone = document.getElementById('pickup-phone');
+    var order = document.getElementById('pickup-order');
+    var time = document.getElementById('pickup-time');
+
+    var nameOk = name.value.trim().length >= 2;
+    var phoneOk = /^[+0-9\s-]{9,}$/.test(phone.value.trim());
+    var orderOk = order.value.trim().length >= 3;
+    var timeOk = time.value !== '';
+
+    setInputError(name, !nameOk);
+    setInputError(phone, !phoneOk);
+    setInputError(order, !orderOk);
+    setInputError(time, !timeOk);
+
+    if (!nameOk || !phoneOk || !orderOk || !timeOk) {
+      pickupMsg.classList.remove('hidden');
+      pickupMsg.classList.add('text-red-600');
+      pickupMsg.textContent = 'Revisa los campos marcados en rojo.';
+      return;
+    }
+
+    pickupMsg.classList.add('hidden');
+
+    var message = 'Hola Eggocentrico, quiero pedir para recoger:' +
+      '\n\n' + order.value.trim() +
+      '\n\nHora de recogida: ' + time.value +
+      '\nNombre: ' + name.value.trim() +
+      '\nTeléfono: ' + phone.value.trim();
+
+    pickupWhatsApp.href = 'https://wa.me/34854500270?text=' + encodeURIComponent(message);
+    pickupSuccessText.textContent = message;
+    pickupSuccess.classList.remove('hidden');
+    showToast('Pedido listo, envíalo por WhatsApp', true);
+  });
+</script>
+</body>
+</html>
